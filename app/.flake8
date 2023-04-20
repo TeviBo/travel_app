@@ -7,7 +7,7 @@ exclude =
     manage.py,
     settings.py,
     .git
-ignore = E203, W503, D103, D100, D100
+ignore = E203, W503
 select = C,E,F,W,B,B950
 import-order-style = google
 inline-quotes = single
