@@ -1,22 +1,14 @@
-import json
+import os
 from unipath import Path
 from django.core.exceptions import ImproperlyConfigured
 
 
 BASE_DIR = Path(__file__).ancestor(3)
-with open(f"{BASE_DIR}/secret.json", encoding="utf-8") as f:
-    secret = json.loads(f.read())
 
-
-def get_secret(secret_name, secrets=secret):
-    try:
-        return secrets[secret_name]
-    except ImproperlyConfigured as exc:
-        msg = f"la variable {secret_name} no existe"
-        raise ImproperlyConfigured(msg) from exc
-
-
-SECRET_KEY = get_secret("SECRET_KEY")
+try:
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+except ImproperlyConfigured as exc:
+    raise ImproperlyConfigured("SECRET_KEY not set") from exc
 
 
 DJANGO_APPS = (
@@ -66,20 +58,20 @@ WSGI_APPLICATION = "travel_blog.wsgi.application"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator", # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", # noqa
     },
 ]
 
-# AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = "core.User"
 
 LANGUAGE_CODE = "en-us"
 
