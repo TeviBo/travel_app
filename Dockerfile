@@ -2,8 +2,8 @@ FROM python:3.11-alpine3.17
 
 ENV PYTHONUNBUFFERED 1
 
-COPY ./requirements/requirements.txt /tmp/requirements.txt
-COPY ./requirements/local.txt /tmp/local.txt
+COPY ./requirements.txt /tmp/requirements.txt
+COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./app /app
 
 WORKDIR /app
@@ -19,7 +19,7 @@ RUN python -m venv /travel_venv && \
                 build-base postgresql-dev musl-dev zlib zlib-dev linux-headers && \
         /travel_venv/bin/pip install -r /tmp/requirements.txt && \
         if [ $DEV = "true" ]; \
-                then /travel_venv/bin/pip install -r /tmp/local.txt; \
+                then /travel_venv/bin/pip install -r /tmp/requirements.dev.txt; \
         fi && \
         rm -rf /tmp && \
         apk del .tmp-build-deps && \
