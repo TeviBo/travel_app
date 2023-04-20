@@ -24,7 +24,7 @@ jobs:
         run: python -m pip install --upgrade pip setuptools wheel
   test-lint:
     environment: dev
-    needs: build
+    runs-on: build
     steps:
       - name: Install dependencies
         run: python -m pip install -r requirements.dev.txt"
