@@ -16,11 +16,11 @@ services:
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     environment:
-      - DB_HOST=db
-      - DB_NAME=dbtravel
-      - DB_USER=traveluser
-      - DB_PASS=bobbiesi796
-      - DEBUG=1
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DEBUG=${DEBUG}
 
     depends_on:
       - db
