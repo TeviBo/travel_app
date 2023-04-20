@@ -1,13 +1,16 @@
 import os
-import json
 from unipath import Path
 from django.core.exceptions import ImproperlyConfigured
 
 
 BASE_DIR = Path(__file__).ancestor(3)
 
+print("SECRET", os.environ.get("SECRET_KEY"))
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+try:
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+except ImproperlyConfigured as exc:
+    raise ImproperlyConfigured("SECRET_KEY not set") from exc
 
 
 DJANGO_APPS = (
@@ -70,7 +73,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = "core.User"
 
 LANGUAGE_CODE = "en-us"
 
