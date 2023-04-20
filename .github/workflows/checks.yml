@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ develop ]
+    branches: [develop]
 
 jobs:
   build:
@@ -18,13 +18,13 @@ jobs:
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
-          architecture: 'x64'
+          python-version: "3.11"
+          architecture: "x64"
         run: python -m pip install --upgrade pip setuptools wheel
   test-lint:
     environment: dev
+    needs: build
     steps:
-      needs: build
       - name: Install dependencies
         run: python -m pip install -r requirements.dev.txt"
       - name: Login to Docker Hub
