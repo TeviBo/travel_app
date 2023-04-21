@@ -1,6 +1,6 @@
 from .base import * # noqa
 
-DEBUG = True
+DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
 ALLOWED_HOSTS = []
 
