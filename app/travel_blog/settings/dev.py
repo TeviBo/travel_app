@@ -2,8 +2,8 @@
 
 from .base import *
 
-DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 print(os.environ.get("DEBUG"))
+DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
 ALLOWED_HOSTS = []
 
