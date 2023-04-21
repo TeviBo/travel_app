@@ -1,17 +1,19 @@
-from .base import * # noqa
+# flake8: noqa
 
-DEBUG = bool(int(os.environ.get('DEBUG', 0)))
+from .base import *
+
+DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
 ALLOWED_HOSTS = []
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2", # noqa
-        "NAME": os.environ.get("DB_NAME"), # noqa
-        "USER": os.environ.get("DB_USER"), # noqa
-        "PASSWORD": os.environ.get("DB_PASS"), # noqa
-        "HOST": os.environ.get("DB_HOST"), # noqa
-        "PORT": os.environ.get("DB_PORT"), # noqa
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASS"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
     }
 }
 
@@ -20,4 +22,4 @@ STATIC_URL = "static/"
 
 
 MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR.child("media") # noqa
+MEDIA_ROOT = BASE_DIR.child("media")
