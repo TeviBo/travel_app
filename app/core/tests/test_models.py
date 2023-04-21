@@ -1,12 +1,8 @@
-# UnitTest
-from unittest.mock import patch
+# Imports
 
 # Django
 from django.contrib.auth import get_user_model
 from django.test import TestCase
-
-# Models
-from core.models import User
 
 
 # Reusable functions:
@@ -15,8 +11,8 @@ def sample_user(email="email@sample.com", password="test123"):
     Creates and return a new user for testing
 
     Args:
-        email (str, optional): desired email for the new user. Defaults to 'email@sample.com'.
-        password (str, optional): desired password for the new user. Defaults to 'test123'.
+        email (str, optional): email for the new user. Defaults to 'email@sample.com'.
+        password (str, optional): password for the new user. Defaults to 'test123'.
     """
     return get_user_model().objects.create_user(email, password)
 
@@ -66,4 +62,3 @@ class ModelTests(TestCase):
 
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
-
