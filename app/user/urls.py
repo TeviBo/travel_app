@@ -13,4 +13,5 @@ app_name = "user"
 urlpatterns = [
     path("create/", views.CreateUserView.as_view(), name="create"),
     path("login/", views.LoginView.as_view(), name="login"),
+    path("profile/", views.UserProfileView.as_view(), name="profile"),
 ]
