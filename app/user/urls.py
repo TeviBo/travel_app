@@ -6,10 +6,11 @@ URL mappings for the user API.
 from django.urls import path
 
 # Views
-from user import views
+from . import views
 
 app_name = "user"
 
 urlpatterns = [
     path("create/", views.CreateUserView.as_view(), name="create"),
+    path("login/", views.LoginView.as_view(), name="login"),
 ]
