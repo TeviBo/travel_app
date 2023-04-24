@@ -24,7 +24,7 @@ DJANGO_APPS = (
 
 
 LOCAL_APPS = ("core",)
-THIRD_PARTY_APPS = ("rest_framework", "rest_framework.authtoken")
+THIRD_PARTY_APPS = ("rest_framework", "rest_framework.authtoken", "drf_spectacular")
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
@@ -70,6 +70,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = "core.User"
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
 
 LANGUAGE_CODE = "en-us"
 
