@@ -166,3 +166,4 @@ cython_debug/
 
 docker-compose-local.yml
 scripts/
+.vscode/

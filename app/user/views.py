@@ -8,6 +8,9 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
+# Utils
+from utils.send_mail import send_email
+
 # Serializers
 from .serializers import UserSerializer, AuthTokenSerializer
 
@@ -16,6 +19,10 @@ class CreateUserView(generics.CreateAPIView):
     """Create a new user in the system."""
 
     serializer_class = UserSerializer
+
+    def perform_create(self, serializer):
+        user = self.request.data
+        send_email(**user)
 
 
 class LoginView(ObtainAuthToken):

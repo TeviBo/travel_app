@@ -75,6 +75,8 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
 }
 
+EMAIL_HOST_USER = "e.bobbiesi@gmail.com"
+
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
