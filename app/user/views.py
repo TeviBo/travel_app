@@ -21,8 +21,9 @@ class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
     def perform_create(self, serializer):
-        user = self.request.data
-        send_email(**user)
+        user = serializer.save()
+        send_email(**serializer.validated_data)
+        return user
 
 
 class LoginView(ObtainAuthToken):
